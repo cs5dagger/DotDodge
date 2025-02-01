@@ -1,18 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float RotateSpeed;
+    [SerializeField] private AudioClip MoveClip, LoseClip;
+    [SerializeField] private GameplayManager gameplayManager;
+    [SerializeField] private GameObject ExplosionPrefab;
+
+    private void Update()
     {
-        
+        if(Input.GetMouseButtonDown(0))
+        {
+            RotateSpeed *= -1f;
+            SoundManager.instance.PlaySound(MoveClip);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        transform.Rotate(0, 0, RotateSpeed * Time.fixedDeltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Obstacle"))
+        {
+            Instantiate(ExplosionPrefab, transform.GetChild(0).position, Quaternion.identity);
+            gameplayManager.GameOver();
+            Destroy(gameObject);
+            return;
+        }
     }
 }
