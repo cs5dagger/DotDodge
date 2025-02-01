@@ -5547,6 +5547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c6f140301cb3045bd5171c98237e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreText: {fileID: 350451530}
+  LevelSpeed: 0a0000001e0000003200000064000000c8000000
+  LevelMax: 32000000960000002c01000058020000e8030000
 --- !u!4 &1599591586
 Transform:
   m_ObjectHideFlags: 0
