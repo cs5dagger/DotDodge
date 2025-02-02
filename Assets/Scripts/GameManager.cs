@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             Init();
+            DontDestroyOnLoad(gameObject);
             return;
         }    
         else
@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
         set 
         { 
             PlayerPrefs.SetInt(highScoreKey, value);
-            PlayerPrefs.Save(); /// Ensure data is saved
         }
     }
 

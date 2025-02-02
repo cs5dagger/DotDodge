@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         if(collision.CompareTag("Obstacle"))
         {
             Instantiate(ExplosionPrefab, transform.GetChild(0).position, Quaternion.identity);
+            SoundManager.instance.PlaySound(LoseClip);
             gameplayManager.GameOver();
             Destroy(gameObject);
             return;

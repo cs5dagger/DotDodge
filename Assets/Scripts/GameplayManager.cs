@@ -18,7 +18,6 @@ public class GameplayManager : MonoBehaviour
     private void Awake()
     {
         GameManager.Instance.IsInitialized = true;
-        HasGameFinished = false;
         Score = 0;
         currentLevel = 0;
         ScoreText.text = ((int)Score).ToString();

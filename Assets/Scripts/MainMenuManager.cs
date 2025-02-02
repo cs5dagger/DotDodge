@@ -16,15 +16,16 @@ public class MainMenuManager : MonoBehaviour
 
     private void Awake()
     {
-        if(GameManager.Instance.IsInitialized)
-        {
-            StartCoroutine(ShowScore());
-        }
-        else
+        HighScoreText.text = GameManager.Instance.HighScore.ToString();
+
+        if(!GameManager.Instance.IsInitialized)
         {
             ScoreText.gameObject.SetActive(false);
             NewBestText.gameObject.SetActive(false); 
-            HighScoreText.text = GameManager.Instance.HighScore.ToString();
+        }
+        else
+        {
+            StartCoroutine(ShowScore());
         }
     }
 
