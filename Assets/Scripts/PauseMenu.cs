@@ -13,17 +13,36 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject ResumeButton;
 
+    [SerializeField]
+    private GameObject ExitOverlay;
+
     public void OnPausePressed()
     {
         Time.timeScale = 0;
-        Overlay.SetActive(true);
-        PauseButton.SetActive(false);
+        this.Overlay.SetActive(true);
+        this.PauseButton.SetActive(false);
     }
 
     public void OnResumePressed()
     {
         Time.timeScale = 1; 
-        Overlay.SetActive(false);
-        PauseButton.SetActive(true);
+        this.Overlay.SetActive(false);
+        this.PauseButton.SetActive(true);
+    }
+
+    public void OnExitPressed()
+    {
+        ExitOverlay.SetActive(true);
+    }
+
+    public void OnConfirmExit() 
+    {
+        Application.Quit();
+        System.Diagnostics.Process.GetCurrentProcess().Kill();
+    }
+
+    public void OnCancel()
+    {
+        ExitOverlay.SetActive(false);
     }
 }
